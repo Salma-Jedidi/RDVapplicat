@@ -1,12 +1,21 @@
 package com.example.RDV.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-@Embeddable
+
+import java.util.Date;
+
+@Entity
 @Data
 public class DossierMedical {
-  /*  @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDossier;*/
-    private byte[] attachmentData;
+    private Integer idDossier;
+
+    @JsonIgnore
+    @OneToOne
+    private Patient patient;
+
 }

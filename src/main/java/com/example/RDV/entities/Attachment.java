@@ -1,17 +1,11 @@
 package com.example.RDV.entities;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Embeddable
 @Data
 public class Attachment {
-  /*  @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String fileName;
-    private String contentType;*/
-    private byte[] content;
+    @Column(name = "attachment_attachment_data")
+    private byte[] attachmentData;
 }

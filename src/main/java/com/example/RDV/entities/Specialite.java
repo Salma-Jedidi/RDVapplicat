@@ -1,16 +1,20 @@
 package com.example.RDV.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
 public class Specialite {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idSpecialite;
     private String codeSpecialite;
     private String libSpecialite;
+    @JsonIgnore
+    @OneToMany(mappedBy = "specialite")
+    private List<Medecin> medecins;
 }

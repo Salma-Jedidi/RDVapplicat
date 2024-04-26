@@ -1,5 +1,6 @@
 package com.example.RDV.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,16 +13,30 @@ public class Medecin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMedecin;
-    private String codeSpecialite;
+
     private String nomMedecin;
-    private Integer CIN;
+    private Integer cinMedecin;
     private String tel;
-    private int prixConsultation;
+    private Integer prixConsultation;
+    private String libelleSpecialite;
+    private String libelleService;
+    private String nomDeletablissement;
+    private String delegationMedecin;
+    @JsonIgnore
     @OneToMany(mappedBy = "medecin")
     private List<RDV> rdvs;
-    @OneToOne
+
+    @ManyToOne
+    @JoinColumn(name = "specialite_id")
     private Specialite specialite;
-    @OneToOne
-    private Service service;
+
+    @ManyToOne
+    @JoinColumn(name = "service_id")
+    private ServiceMed serviceMed;
+
+    @ManyToMany
+    private List<Etablissement> etablissements;
+    @Enumerated
+    private EtatMedecin etatMedecin;
 }
 

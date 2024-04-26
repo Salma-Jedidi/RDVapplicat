@@ -7,9 +7,11 @@ import lombok.Data;
 @Data
 public class Delegation {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String codeDelegation;
-    private String codeGouvernorat;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idDelegation;
+    private Integer codeDelegation;
+
+    private Integer codeDuGouvernorat;
     private String libDelegation;
     @ManyToOne
     private Gouvernorat gouvernorat;

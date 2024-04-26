@@ -1,2 +1,6 @@
-package com.example.RDV.entities;public enum EtatMedecin {
+package com.example.RDV.entities;
+
+public enum EtatMedecin {
+    PRIVE,
+    PUBLIC
 }

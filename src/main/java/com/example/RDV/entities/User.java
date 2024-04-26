@@ -1,5 +1,6 @@
 package com.example.RDV.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,9 +22,11 @@ public class User implements UserDetails {
     private String nom;
     private String email;
     private String password;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateCreation = LocalDate.now();
     @Enumerated(EnumType.STRING)
     private Role role ;
+    private String resetToken;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
